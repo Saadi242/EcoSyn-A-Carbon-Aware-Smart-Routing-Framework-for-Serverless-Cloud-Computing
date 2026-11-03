@@ -1,0 +1,123 @@
+# EcoSyn Framework Global Configuration File
+# Department of Information Technology, The University of Haripur
+# Project: ECOSYN (A Carbon-Aware Smart Routing Framework for Serverless Cloud Computing)
+
+system:
+  environment: "development"
+  log_level: "INFO"
+  random_seed: 42
+
+database:
+  type: "sqlite" # "sqlite" or "mysql"
+  sqlite_path: "data/ecosyn.db"
+  mysql:
+    host: "localhost"
+    port: 3306
+    user: "root"
+    password: ""
+    database: "ecosyn_db"
+
+carbon_tracker:
+  mode: "trace" # "trace", "api", or "hybrid"
+  trace_file: "data/carbon_traces/sample_carbon_traces.csv"
+  api:
+    provider: "electricity_maps"
+    api_key: "" # Optional Electricity Maps auth token
+    cache_ttl_seconds: 300
+    timeout_seconds: 5
+
+routing_defaults:
+  default_policy: "ecosyn" # "ecosyn", "round_robin", "latency_first"
+  sla_threshold_ms: 250.0
+  weights:
+    carbon: 0.50
+    latency: 0.35
+    cost: 0.15
+
+# Global Cloud Data Center Regions Profile
+regions:
+  eu-north-1:
+    name: "Europe (Stockholm)"
+    country: "Sweden"
+    latitude: 59.3293
+    longitude: 18.0686
+    pue: 1.10 # Power Usage Effectiveness
+    base_carbon_intensity: 28.0 # gCO2eq / kWh (Hydro / Nuclear dominated)
+    compute_cost_per_gb_sec: 0.0000166667
+    invocation_cost_per_million: 0.20
+    hardware_active_power_watts: 15.0 # Average active server wattage per vCPU/container
+
+  us-east-1:
+    name: "US East (N. Virginia)"
+    country: "United States"
+    latitude: 39.0438
+    longitude: -77.4874
+    pue: 1.18
+    base_carbon_intensity: 385.0 # gCO2eq / kWh (Natural Gas & Coal grid mix)
+    compute_cost_per_gb_sec: 0.0000166667
+    invocation_cost_per_million: 0.20
+    hardware_active_power_watts: 16.5
+
+  ap-south-1:
+    name: "Asia Pacific (Mumbai)"
+    country: "India"
+    latitude: 19.0760
+    longitude: 72.8777
+    pue: 1.25
+    base_carbon_intensity: 640.0 # gCO2eq / kWh (Coal heavy thermal grid)
+    compute_cost_per_gb_sec: 0.0000175000
+    invocation_cost_per_million: 0.22
+    hardware_active_power_watts: 18.0
+
+  sa-east-1:
+    name: "South America (São Paulo)"
+    country: "Brazil"
+    latitude: -23.5505
+    longitude: -46.6333
+    pue: 1.20
+    base_carbon_intensity: 125.0 # gCO2eq / kWh (Hydro / Biofuel grid)
+    compute_cost_per_gb_sec: 0.0000200000
+    invocation_cost_per_million: 0.24
+    hardware_active_power_watts: 17.0
+
+  us-west-2:
+    name: "US West (Oregon)"
+    country: "United States"
+    latitude: 45.5152
+    longitude: -122.6784
+    pue: 1.12
+    base_carbon_intensity: 110.0 # gCO2eq / kWh (Hydro & Wind mix)
+    compute_cost_per_gb_sec: 0.0000166667
+    invocation_cost_per_million: 0.20
+    hardware_active_power_watts: 15.5
+
+# Baseline Network Round-Trip Time (RTT) Matrix (ms)
+# Simulates realistic physical fiber network distance between client origin and cloud region
+latency_matrix_ms:
+  client-europe:
+    eu-north-1: 35.0
+    us-east-1: 105.0
+    us-west-2: 155.0
+    ap-south-1: 130.0
+    sa-east-1: 180.0
+
+  client-north-america:
+    us-east-1: 25.0
+    us-west-2: 65.0
+    eu-north-1: 110.0
+    sa-east-1: 140.0
+    ap-south-1: 195.0
+
+  client-asia:
+    ap-south-1: 30.0
+    eu-north-1: 135.0
+    us-east-1: 210.0
+    us-west-2: 175.0
+    sa-east-1: 260.0
+
+  client-south-america:
+    sa-east-1: 30.0
+    us-east-1: 135.0
+    us-west-2: 170.0
+    eu-north-1: 190.0
+    ap-south-1: 270.0

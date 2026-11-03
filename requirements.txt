@@ -1,0 +1,21 @@
+# Core numerical & data handling
+numpy>=1.24.0
+pandas>=2.0.0
+pyyaml>=6.0.1
+
+# HTTP requests & API integration
+requests>=2.31.0
+
+# Database & persistence
+sqlalchemy>=2.0.0
+pymysql>=1.1.0
+
+# Visualization & Interactive Dashboard
+streamlit>=1.30.0
+plotly>=5.18.0
+matplotlib>=3.8.0
+seaborn>=0.13.0
+
+# Testing & quality
+pytest>=7.4.0
+

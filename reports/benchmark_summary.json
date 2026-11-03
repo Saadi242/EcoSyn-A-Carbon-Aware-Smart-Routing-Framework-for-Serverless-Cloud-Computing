@@ -1,0 +1,93 @@
+[
+  {
+    "policy": "latency_first",
+    "total_requests": 1000,
+    "total_carbon_g": 0.153,
+    "carbon_saved_pct": 0.0,
+    "total_energy_kwh": 0.00049,
+    "total_cost_usd": 0.001316,
+    "avg_latency_ms": 135.16,
+    "median_latency_ms": 126.78,
+    "p95_latency_ms": 266.31,
+    "sla_violation_count": 112,
+    "sla_violation_rate_pct": 11.2,
+    "cold_start_count": 24,
+    "cold_start_rate_pct": 2.4,
+    "region_distribution_pct": {
+      "eu-north-1": 33.4,
+      "us-east-1": 36.3,
+      "ap-south-1": 19.8,
+      "sa-east-1": 10.5
+    },
+    "policy_label": "Latency-First"
+  },
+  {
+    "policy": "round_robin",
+    "total_requests": 1000,
+    "total_carbon_g": 0.1414,
+    "carbon_saved_pct": 7.59,
+    "total_energy_kwh": 0.000496,
+    "total_cost_usd": 0.001346,
+    "avg_latency_ms": 233.85,
+    "median_latency_ms": 227.65,
+    "p95_latency_ms": 412.25,
+    "sla_violation_count": 386,
+    "sla_violation_rate_pct": 38.6,
+    "cold_start_count": 30,
+    "cold_start_rate_pct": 3.0,
+    "region_distribution_pct": {
+      "ap-south-1": 20.0,
+      "eu-north-1": 20.0,
+      "sa-east-1": 20.0,
+      "us-east-1": 20.0,
+      "us-west-2": 20.0
+    },
+    "policy_label": "Round-Robin"
+  },
+  {
+    "policy": "ecosyn",
+    "total_requests": 1000,
+    "total_carbon_g": 0.1021,
+    "carbon_saved_pct": 33.25,
+    "total_energy_kwh": 0.00047,
+    "total_cost_usd": 0.001317,
+    "avg_latency_ms": 160.1,
+    "median_latency_ms": 162.5,
+    "p95_latency_ms": 269.54,
+    "sla_violation_count": 123,
+    "sla_violation_rate_pct": 12.3,
+    "cold_start_count": 21,
+    "cold_start_rate_pct": 2.1,
+    "region_distribution_pct": {
+      "eu-north-1": 45.7,
+      "us-west-2": 30.2,
+      "ap-south-1": 7.5,
+      "sa-east-1": 10.5,
+      "us-east-1": 6.1
+    },
+    "policy_label": "EcoSyn-Balanced"
+  },
+  {
+    "policy": "ecosyn",
+    "total_requests": 1000,
+    "total_carbon_g": 0.093,
+    "carbon_saved_pct": 39.19,
+    "total_energy_kwh": 0.000462,
+    "total_cost_usd": 0.001309,
+    "avg_latency_ms": 177.87,
+    "median_latency_ms": 173.0,
+    "p95_latency_ms": 265.29,
+    "sla_violation_count": 119,
+    "sla_violation_rate_pct": 11.9,
+    "cold_start_count": 15,
+    "cold_start_rate_pct": 1.5,
+    "region_distribution_pct": {
+      "eu-north-1": 77.5,
+      "us-west-2": 2.6,
+      "ap-south-1": 7.5,
+      "sa-east-1": 6.3,
+      "us-east-1": 6.1
+    },
+    "policy_label": "EcoSyn-Green"
+  }
+]
